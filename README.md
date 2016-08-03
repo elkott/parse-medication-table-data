@@ -15,7 +15,7 @@ This project is to illustrate the use of the PAPAPARSE CSV table file parser, an
 1. Download repository ZIP file, and unzip it. It will unzip to, say, the "parse-medication-table-data" folder.
 2. Browse to the "parse-medication-table-data/html" subfolder.
 3. Open "index.html" in the browser (tested in chrome, and FireFox).
-4. Load the database sample files. Start with the "COMP.TXT" file first, and then "DRUG.TXT".
+4. Load the database sample files from the "DPDFiles" sub-folder. Start with the "COMP.TXT" file first, and then "DRUG.TXT".
 5. If both files are loaded successfully, the two main functionality of this example will become available:
     (a) Display drug brand name, and manufacturer data, and 
     (b) Generate Neo4j Cypher queries to create nodes representing drug, and drug companies, and their relationships.
