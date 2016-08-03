@@ -1,0 +1,45 @@
+h1 {
+  font-size: 2.75rem;
+  font-weight: 300;
+}
+h2 {
+  font-size: 2.25rem;
+  font-weight: 300;
+}
+h3 {
+  font-size: 2rem;
+  font-weight: 200;
+}
+h4 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+h5 {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.medication-name-span {
+  padding-left: 50px;
+  font-style: italic;
+}
+.company-name-span {
+  padding-left: 50px;
+  font-style: italic;
+  font-weight: 400;
+}
+.file-name-span {
+  font-weight: 200;
+  font-size: 2.0rem;
+  font-variant: small-caps;
+}
+.cypher-query-container {
+  font-weight: 300;
+  padding: 0.85rem;
+  margin-top: 1.1rem;
+}
+.query-form {
+  margin: 1.25rem;
+}
+.row{
+  margin-top: 2.5rem;
+}

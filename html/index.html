@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--Load materialize.css-->
+  <link type="text/css" rel="stylesheet" href="../css/materialize.min.css" media="screen,projection" />
+  <link type="text/css" rel="stylesheet" href="../css/diaaE.css" media="screen,projection" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>Medication Data Pre-Processor</h1>
+
+    <div class="row">
+      <h3>Parse Drug Database Table Files</h3>
+      <form action="#">
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>Load Meds DB Table File</span>
+            <input type="file" onchange="readAndParsePDPFiles()">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text" placeholder="Upload Health Canada DPD files from (../DPDFiles) folder..">
+          </div>
+        </div>
+      </form>
+    </div>
+
+
+    <div class="row" id="queryForms">
+      <h3>Query Drug, and Pharmaceutical Company Data</h3>
+
+      <div class="row">
+        <div class="col s12">
+          <ul class="tabs">
+            <li class="tab col s3"><a id='getDrugDataTab' href="#getDrugData">Drug Data</a></li>
+            <li class="tab col s3"><a id='getGraphQueriesTab' href="#getGraphQueries">Neo4j Cypher Queries</a></li>
+          </ul>
+        </div>
+        <div id="getDrugData" class="col s12">
+          <div class="row">
+            <form class="query-form yellow lighten-5">
+              <input type="number" id="drugCode" placeholder="Enter Drug Code. Minimum value is (10000)" min="10000">
+              <div class="btn orange" id="getDrugData">
+                <span>Get Drug Data</span>
+              </div>
+              <div>
+                <h4>Drug Query Result</h4>
+                <div id="drugDataMessage"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div id="getGraphQueries" class="col s12">
+          <div class="row">
+            <form class="query-form yellow lighten-5">
+              <div>
+                <div class="cypher-query-container">
+                  <h4>Create Nodes</h4>
+                  <div class="row">
+                    <div class="btn orange" id="getBrandNameQueries">
+                      <span>Brand Names</span>
+                    </div>
+                    <div class="btn orange" id="getDrugCompaniesAndAddressesQueries">
+                      <span>Drug Companies and Addresses</span>
+                    </div>
+                    <div class="btn orange" id="getDrugQueries">
+                      <span>Drugs</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="cypher-query-container">
+                  <h4>Create Relationships</h4>
+                  <div class="row">
+                    <div class="btn teal" id="getDrugAndBrandNameRelationshipQueries">
+                      <span>Drugs-Brands</span>
+                    </div>
+
+                    <div class="btn teal" id="getCompaniesAndBrandNameRelationshipQueries">
+                      <span>Companies-Brands</span>
+                    </div>
+                  </div>
+                </div>
+                <h4  id="cypherQueriesLable">Neo4j Cypher Queries (execute in batch mode!)</h4>
+                <div class="cypher-query-container orange lighten-5" id="cypherQueries"></div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="../js/vendor/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" src="../js/vendor/materialize.min.js"></script>
+
+  <!-- Import other essential libraries -->
+  <script type="text/javascript" src="../js/vendor/papaparse.js"></script>
+  <script type="text/javascript" src="../js/vendor/underscore.js"></script>
+
+  <!-- Import functions -->
+  <script type="text/javascript" src="../js/diaaE/preambles.js"></script>
+  <script type="text/javascript" src="../js/diaaE/utilityFunctions.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#queryForms').hide();
+      $('#getDrugDataTab').removeClass('active');
+      $('#getGraphQueriesTab').removeClass('active');
+    });
+  </script>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Warning!</h4>
+      <p>Please load the pharmaceutical companies (comp.txt) file first, and then load the medications (drug.txt) file.</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">OK</a>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
